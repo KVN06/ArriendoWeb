@@ -20,7 +20,7 @@ export function HeroSection() {
     <section
       ref={ref}
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24"
     >
       {/* Background Image with Parallax */}
       <motion.div 
@@ -43,7 +43,7 @@ export function HeroSection() {
       {/* Content */}
       <motion.div
         style={{ opacity }}
-        className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8 text-center"
+        className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8 text-center pt-8 md:pt-10 pb-24 md:pb-28"
       >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -123,7 +123,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto"
+          className="mt-10 md:mt-14 grid grid-cols-3 gap-5 md:gap-8 max-w-lg mx-auto"
         >
           {[
             { value: "3", label: "Habitaciones" },
@@ -143,7 +143,7 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
         <motion.a
           href="#gallery"
