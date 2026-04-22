@@ -1,48 +1,34 @@
 "use client"
 
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import { ChevronDown, MapPin, Home } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
-import { useRef } from "react"
 
 export function HeroSection() {
-  const ref = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"]
-  })
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-
   return (
     <section
-      ref={ref}
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24"
     >
       {/* Background Image with Parallax */}
-      <motion.div 
-        style={{ y }}
-        className="absolute inset-0 z-0"
-      >
+      <div className="absolute inset-0 z-0">
         <Image
           src="/images/apartamento.jpg"
           alt="Apartamento en alquiler en Popayán"
           fill
           priority
+          quality={68}
           className="object-cover"
           sizes="100vw"
         />
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
-      </motion.div>
+      </div>
 
       {/* Content */}
       <motion.div
-        style={{ opacity }}
         className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8 text-center pt-8 md:pt-10 pb-24 md:pb-28"
       >
         <motion.div

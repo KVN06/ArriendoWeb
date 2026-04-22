@@ -75,6 +75,7 @@ export function FinalCtaSection() {
                     src="/images/apartamento.jpg"
                     alt="Vista principal del apartamento"
                     fill
+                    quality={64}
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
@@ -84,6 +85,7 @@ export function FinalCtaSection() {
                     src="/images/comedorcocina1.jpg"
                     alt="Zona de cocina y comedor"
                     fill
+                    quality={60}
                     className="object-cover"
                     sizes="(max-width: 1024px) 50vw, 25vw"
                   />
@@ -93,6 +95,7 @@ export function FinalCtaSection() {
                     src="/images/patiogrande1.jpg"
                     alt="Patio grande del apartamento"
                     fill
+                    quality={60}
                     className="object-cover"
                     sizes="(max-width: 1024px) 50vw, 25vw"
                   />

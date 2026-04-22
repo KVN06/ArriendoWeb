@@ -125,12 +125,8 @@ export function GallerySection() {
         {/* Gallery Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 auto-rows-[140px] md:auto-rows-[180px]">
           {filteredImages.map((image, index) => (
-            <motion.div
+            <div
               key={image.src}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.24) }}
               className={`relative cursor-pointer group overflow-hidden rounded-xl ${
                 index === 0
                   ? "col-span-2 row-span-2"
@@ -156,8 +152,17 @@ export function GallerySection() {
                   src={image.src}
                   alt={image.alt}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  quality={58}
+                  priority={index < 3}
+                  loading={index < 3 ? "eager" : "lazy"}
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes={
+                    index === 0
+                      ? "(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 50vw"
+                      : index === 4 || index === 10 || index === 16
+                        ? "(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 50vw"
+                        : "(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  }
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -166,7 +171,7 @@ export function GallerySection() {
                   <span className="text-white font-medium text-sm">{image.title}</span>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -239,6 +244,7 @@ export function GallerySection() {
                 src={filteredImages[selectedIndex].src}
                 alt={filteredImages[selectedIndex].alt}
                 fill
+                quality={75}
                 className="object-contain"
                 sizes="100vw"
               />

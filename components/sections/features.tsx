@@ -45,6 +45,7 @@ export function FeaturesSection() {
                 src="/images/salagaraje2.jpg"
                 alt="Interior del apartamento"
                 fill
+                quality={62}
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
