@@ -1,6 +1,3 @@
-"use client"
-
-import { motion } from "framer-motion"
 import { Check, Home, Info } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
@@ -36,13 +33,7 @@ export function PricingSection() {
     <section id="pricing" className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <span className="text-primary font-medium text-sm tracking-widest uppercase mb-4 block">
             Arriendo
           </span>
@@ -52,16 +43,10 @@ export function PricingSection() {
           <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
             Un precio justo por un apartamento completo y bien ubicado. Sin sorpresas ni cobros escondidos.
           </p>
-        </motion.div>
+        </div>
 
         {/* Single Pricing Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="max-w-lg mx-auto"
-        >
+        <div className="max-w-lg mx-auto">
           <Card className="relative border-primary shadow-xl shadow-primary/10">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2">
               <span className="inline-flex items-center gap-1 bg-primary text-primary-foreground text-xs font-medium px-4 py-1.5 rounded-full">
@@ -121,32 +106,21 @@ export function PricingSection() {
                 </ul>
               </div>
 
-              <motion.a
-                href="#contact"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="block"
-              >
+              <a href="#contact" className="block transition-transform hover:scale-[1.01] active:scale-[0.99]">
                 <Button 
                   className="w-full rounded-full py-6 bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
                   Quiero más información
                 </Button>
-              </motion.a>
+              </a>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
 
         {/* Note */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center text-sm text-muted-foreground mt-12"
-        >
+        <p className="text-center text-sm text-muted-foreground mt-12">
           ¿Tienes dudas sobre algo? Escríbenos sin compromiso, con gusto te explicamos todo.
-        </motion.p>
+        </p>
       </div>
     </section>
   )

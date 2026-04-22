@@ -1,18 +1,10 @@
-"use client"
-
 import { MessageCircle, Phone } from "lucide-react"
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { siteConfig } from "@/lib/site"
 
 export function StickyContactBar() {
   return (
-    <motion.div
-      initial={{ y: 80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: 1.2, duration: 0.4 }}
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-border/60 bg-background/95 p-3 backdrop-blur md:hidden"
-    >
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border/60 bg-background/95 p-3 backdrop-blur md:hidden">
       <div className="container mx-auto grid grid-cols-2 gap-3">
         <a href={`tel:${siteConfig.phoneE164}`}>
           <Button variant="outline" className="w-full rounded-full">
@@ -32,6 +24,6 @@ export function StickyContactBar() {
           </Button>
         </a>
       </div>
-    </motion.div>
+    </div>
   )
 }

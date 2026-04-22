@@ -1,10 +1,15 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+
+export function TestimonialsSection() {
+  return null
+}
+
+/*
 
 const testimonials = [
   {
@@ -218,3 +223,4 @@ export function TestimonialsSection() {
     </section>
   )
 }
+*/

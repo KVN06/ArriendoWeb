@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
@@ -71,10 +70,7 @@ export function Navbar() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+      <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? "bg-background/80 backdrop-blur-xl shadow-lg border-b border-border/50"
@@ -84,21 +80,19 @@ export function Navbar() {
         <nav className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <motion.a
+            <a
               href="#home"
               className={`font-serif text-xl md:text-2xl font-bold transition-colors ${
                 isOnHero ? "text-white drop-shadow-sm" : "text-foreground"
               }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
               Apto Popayán
-            </motion.a>
+            </a>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
-                <motion.a
+                <a
                   key={link.name}
                   href={link.href}
                   className={`text-sm font-medium transition-colors relative group ${
@@ -110,7 +104,7 @@ export function Navbar() {
                         ? "text-foreground"
                         : "text-muted-foreground hover:text-foreground"
                   }`}
-                  whileHover={{ y: -2 }}
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
                   <span
@@ -118,7 +112,7 @@ export function Navbar() {
                       activeSection === link.href ? "w-full" : "w-0 group-hover:w-full"
                     }`}
                   />
-                </motion.a>
+                </a>
               ))}
             </div>
 
@@ -139,16 +133,14 @@ export function Navbar() {
                 </Button>
               )}
 
-              <motion.a
+              <a
                 href="#contact"
                 className="hidden md:inline-flex"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
                 <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6">
                   Me interesa
                 </Button>
-              </motion.a>
+              </a>
 
               {/* Mobile Menu Button */}
               <Button
@@ -163,52 +155,36 @@ export function Navbar() {
             </div>
           </div>
         </nav>
-      </motion.header>
+      </header>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 lg:hidden"
-          >
-            <div className="absolute inset-0 bg-background/95 backdrop-blur-xl pt-20">
-              <nav className="container mx-auto px-4 py-8">
-                <div className="flex flex-col gap-4">
-                  {navLinks.map((link, index) => (
-                    <motion.a
-                      key={link.name}
-                      href={link.href}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="text-2xl font-medium text-foreground py-3 border-b border-border/50"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {link.name}
-                    </motion.a>
-                  ))}
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: navLinks.length * 0.1 }}
-                    className="pt-4"
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-40 lg:hidden">
+          <div className="absolute inset-0 bg-background/95 backdrop-blur-xl pt-20">
+            <nav className="container mx-auto px-4 py-8">
+              <div className="flex flex-col gap-4">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="text-2xl font-medium text-foreground py-3 border-b border-border/50"
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
-                      <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full py-6 text-lg">
-                        Quiero verlo
-                      </Button>
-                    </a>
-                  </motion.div>
+                    {link.name}
+                  </a>
+                ))}
+                <div className="pt-4">
+                  <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full py-6 text-lg">
+                      Quiero verlo
+                    </Button>
+                  </a>
                 </div>
-              </nav>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              </div>
+            </nav>
+          </div>
+        </div>
+      )}
     </>
   )
 }

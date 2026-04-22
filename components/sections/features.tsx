@@ -1,6 +1,3 @@
-"use client"
-
-import { motion } from "framer-motion"
 import { MapPin, Users, ShieldCheck, Leaf } from "lucide-react"
 import Image from "next/image"
 
@@ -33,43 +30,26 @@ export function FeaturesSection() {
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image Side */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
+          <div className="relative">
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
               <Image
                 src="/images/salagaraje2.jpg"
                 alt="Interior del apartamento"
                 fill
-                quality={62}
+                quality={80}
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
             {/* Floating Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="absolute -bottom-6 -right-6 md:bottom-8 md:-right-8 bg-card p-6 rounded-2xl shadow-2xl border border-border/50 max-w-[220px]"
-            >
+            <div className="absolute -bottom-6 -right-6 md:bottom-8 md:-right-8 bg-card p-6 rounded-2xl shadow-2xl border border-border/50 max-w-[220px]">
               <div className="text-3xl font-bold text-primary mb-1">$1.200.000 negociable</div>
               <div className="text-sm text-muted-foreground">COP al mes (servicios aparte)</div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Content Side */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
+          <div>
             <span className="text-primary font-medium text-sm tracking-widest uppercase mb-4 block">
               Por qué te va a gustar
             </span>
@@ -84,12 +64,8 @@ export function FeaturesSection() {
               {features.map((feature, index) => {
                 const Icon = feature.icon
                 return (
-                  <motion.div
+                  <div
                     key={feature.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
                     className="group flex gap-4"
                   >
                     <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
@@ -99,11 +75,11 @@ export function FeaturesSection() {
                       <h3 className="font-semibold text-foreground mb-1">{feature.title}</h3>
                       <p className="text-sm text-muted-foreground">{feature.description}</p>
                     </div>
-                  </motion.div>
+                  </div>
                 )
               })}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

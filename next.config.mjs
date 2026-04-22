@@ -9,7 +9,8 @@ const nextConfig = {
     root: __dirname,
   },
   images: {
-    formats: ['image/avif', 'image/webp'],
+    formats: ['image/webp'],
+    qualities: [75, 80, 85],
     minimumCacheTTL: 2678400,
     remotePatterns: [
       {

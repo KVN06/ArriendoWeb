@@ -1,6 +1,3 @@
-"use client"
-
-import { motion } from "framer-motion"
 import { Phone, MapPin, Heart } from "lucide-react"
 import { siteConfig } from "@/lib/site"
 
@@ -18,12 +15,7 @@ export function Footer() {
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-12 md:gap-8 mb-12">
           {/* Brand */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+          <div>
             <a href="#home" className="font-serif text-2xl font-bold mb-4 block">
               {siteConfig.brandName}
             </a>
@@ -33,16 +25,10 @@ export function Footer() {
             <p className="text-white/70 text-sm dark:text-zinc-300/80">
               <strong className="text-white dark:text-zinc-100">{siteConfig.monthlyPrice} COP al mes (servicios aparte)</strong>
             </p>
-          </motion.div>
+          </div>
 
           {/* Quick Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="md:text-center"
-          >
+          <div className="md:text-center">
             <h3 className="font-semibold mb-4">Navegación</h3>
             <ul className="space-y-2">
               {footerLinks.map((link) => (
@@ -56,16 +42,10 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Contact */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="md:text-right"
-          >
+          <div className="md:text-right">
             <h3 className="font-semibold mb-4">Contacto</h3>
             <ul className="space-y-3">
               <li className="flex items-center gap-2 md:justify-end">
@@ -82,17 +62,11 @@ export function Footer() {
                 </span>
               </li>
             </ul>
-          </motion.div>
+          </div>
         </div>
 
         {/* Bottom */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="pt-8 border-t border-white/10 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4"
-        >
+        <div className="pt-8 border-t border-white/10 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/50 text-sm dark:text-zinc-400">
             © {new Date().getFullYear()} Apartamento en alquiler. Popayán, Cauca.
           </p>
@@ -103,7 +77,7 @@ export function Footer() {
             <br />
             <span>por Kevin Benavides</span>
           </p>
-        </motion.div>
+        </div>
       </div>
     </footer>
   )

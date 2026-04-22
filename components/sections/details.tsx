@@ -1,6 +1,3 @@
-"use client"
-
-import { motion } from "framer-motion"
 import { 
   Bed, 
   Bath, 
@@ -44,33 +41,12 @@ const amenities = [
   { icon: Car, label: "Parqueadero techado" },
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-}
-
 export function DetailsSection() {
   return (
     <section id="details" className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <span className="text-primary font-medium text-sm tracking-widest uppercase mb-4 block">
             El Apartamento
           </span>
@@ -80,29 +56,19 @@ export function DetailsSection() {
           <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
             Es un apartamento completo en primer piso dentro de una casa familiar. Tienes tu propia entrada, espacios independientes y un entorno residencial con movimiento urbano normal.
           </p>
-        </motion.div>
+        </div>
 
         {/* Details Cards */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16"
-        >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16">
           {details.map((detail) => {
             const Icon = detail.icon
             return (
-              <motion.div key={detail.label} variants={itemVariants} className="h-full">
+              <div key={detail.label} className="h-full">
                 <Card className="h-full group hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 bg-card border-border/50 hover:border-primary/30">
                   <CardContent className="h-full p-6 md:p-8 text-center flex flex-col items-center justify-center">
-                    <motion.div 
-                      className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-4 group-hover:scale-110 transition-transform duration-300"
-                      whileHover={{ rotate: [0, -10, 10, 0] }}
-                      transition={{ duration: 0.5 }}
-                    >
+                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-4 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-7 h-7" />
-                    </motion.div>
+                    </div>
                     <div className="text-2xl md:text-3xl font-bold text-foreground mb-1">{detail.value}</div>
                     <div className="text-muted-foreground text-sm">{detail.label}</div>
                     <div className="text-xs text-muted-foreground/80 mt-1 min-h-4">
@@ -110,37 +76,23 @@ export function DetailsSection() {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             )
           })}
-        </motion.div>
+        </div>
 
         {/* Spaces */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
+        <div className="mb-16">
           <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground text-center mb-8">
             Los espacios del apartamento
           </h3>
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
-          >
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {spaces.map((space) => {
               const Icon = space.icon
               return (
-                <motion.div
+                <div
                   key={space.label}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  className="p-5 rounded-xl bg-secondary/50 hover:bg-secondary transition-all duration-300"
+                  className="p-5 rounded-xl bg-secondary/50 hover:bg-secondary hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="flex items-center gap-3 mb-2">
                     <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
@@ -149,47 +101,34 @@ export function DetailsSection() {
                     <span className="font-semibold text-foreground">{space.label}</span>
                   </div>
                   <p className="text-sm text-muted-foreground pl-13">{space.description}</p>
-                </motion.div>
+                </div>
               )
             })}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Amenities */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+        <div>
           <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground text-center mb-8">
             Qué más incluye
           </h3>
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto"
-          >
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
             {amenities.map((amenity) => {
               const Icon = amenity.icon
               return (
-                <motion.div
+                <div
                   key={amenity.label}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.05 }}
-                  className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border/50"
+                  className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border/50 transition-transform duration-300 hover:scale-[1.02]"
                 >
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
                   <span className="text-sm font-medium text-foreground">{amenity.label}</span>
-                </motion.div>
+                </div>
               )
             })}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   )

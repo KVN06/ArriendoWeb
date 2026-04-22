@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { createPortal } from "react-dom"
 import Image from "next/image"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -85,17 +85,26 @@ export function GallerySection() {
     return () => window.removeEventListener("keydown", onKeyDown)
   }, [selectedIndex, filteredImages.length])
 
+  useEffect(() => {
+    if (selectedIndex === null) return
+
+    const previousBodyOverflow = document.body.style.overflow
+    const previousHtmlOverflow = document.documentElement.style.overflow
+
+    document.body.style.overflow = "hidden"
+    document.documentElement.style.overflow = "hidden"
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow
+      document.documentElement.style.overflow = previousHtmlOverflow
+    }
+  }, [selectedIndex])
+
   return (
     <section id="gallery" className="py-20 md:py-32 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <span className="text-primary font-medium text-sm tracking-widest uppercase mb-4 block">
             Galería
           </span>
@@ -105,7 +114,7 @@ export function GallerySection() {
           <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
             Estas son fotos reales y recientes del apartamento, para que veas con claridad cada espacio antes de agendar la visita.
           </p>
-        </motion.div>
+        </div>
 
         <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-8 md:mb-10">
           {filters.map((filter) => (
@@ -152,7 +161,7 @@ export function GallerySection() {
                   src={image.src}
                   alt={image.alt}
                   fill
-                  quality={58}
+                  quality={75}
                   priority={index < 3}
                   loading={index < 3 ? "eager" : "lazy"}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -177,88 +186,81 @@ export function GallerySection() {
       </div>
 
       {/* Lightbox */}
-      <AnimatePresence>
-        {selectedIndex !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
-            onClick={closeLightbox}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Visor de imágenes del apartamento"
-          >
-            {/* Close Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute top-4 right-4 text-white hover:bg-white/10 z-10"
-              onClick={(e) => {
-                e.stopPropagation()
-                closeLightbox()
-              }}
-              aria-label="Cerrar galería"
-            >
-              <X className="w-6 h-6" />
-            </Button>
-
-            {/* Navigation */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 z-10"
-              onClick={(e) => {
-                e.stopPropagation()
-                goToPrevious()
-              }}
-              aria-label="Imagen anterior"
-            >
-              <ChevronLeft className="w-8 h-8" />
-            </Button>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 z-10"
-              onClick={(e) => {
-                e.stopPropagation()
-                goToNext()
-              }}
-              aria-label="Imagen siguiente"
-            >
-              <ChevronRight className="w-8 h-8" />
-            </Button>
-
-            {/* Image */}
-            <motion.div
-              key={selectedIndex}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-              className="relative w-full h-full max-w-5xl max-h-[80vh] mx-4"
-              onClick={(e) => e.stopPropagation()}
-            >
+      {selectedIndex !== null && typeof document !== "undefined" && createPortal(
+        <div
+          className="fixed inset-0 z-[9999] bg-black/95 overflow-hidden"
+          onClick={closeLightbox}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Visor de imágenes del apartamento"
+        >
+          <div className="absolute inset-0 p-3 md:p-8" onClick={(e) => e.stopPropagation()}>
+            <div className="relative w-full h-full">
               <Image
                 src={filteredImages[selectedIndex].src}
                 alt={filteredImages[selectedIndex].alt}
                 fill
-                quality={75}
+                quality={85}
                 className="object-contain"
                 sizes="100vw"
               />
-            </motion.div>
-
-            {/* Caption */}
-            <div className="absolute bottom-8 left-0 right-0 text-center">
-              <span className="text-white/80 text-sm">
-                {selectedIndex + 1} / {filteredImages.length} — {filteredImages[selectedIndex].title}
-              </span>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+
+          {/* Close Button (siempre visible en pantalla) */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="fixed h-12 w-12 md:h-14 md:w-14 text-white bg-black/60 hover:bg-black/80 z-[10000] shadow-lg"
+            style={{
+              top: "max(env(safe-area-inset-top), 12px)",
+              right: "max(env(safe-area-inset-right), 12px)",
+            }}
+            onClick={(e) => {
+              e.stopPropagation()
+              closeLightbox()
+            }}
+            aria-label="Cerrar galería"
+          >
+            <X className="w-7 h-7 md:w-8 md:h-8" />
+          </Button>
+
+          {/* Navigation */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="fixed left-2 md:left-4 top-1/2 -translate-y-1/2 h-12 w-12 md:h-14 md:w-14 text-white bg-black/40 hover:bg-black/65 z-[10000]"
+            onClick={(e) => {
+              e.stopPropagation()
+              goToPrevious()
+            }}
+            aria-label="Imagen anterior"
+          >
+            <ChevronLeft className="w-9 h-9 md:w-10 md:h-10" />
+          </Button>
+
+          <Button
+            variant="ghost"
+            size="icon"
+            className="fixed right-2 md:right-4 top-1/2 -translate-y-1/2 h-12 w-12 md:h-14 md:w-14 text-white bg-black/40 hover:bg-black/65 z-[10000]"
+            onClick={(e) => {
+              e.stopPropagation()
+              goToNext()
+            }}
+            aria-label="Imagen siguiente"
+          >
+            <ChevronRight className="w-9 h-9 md:w-10 md:h-10" />
+          </Button>
+
+          {/* Caption */}
+          <div className="fixed bottom-3 md:bottom-5 left-0 right-0 text-center px-4 z-[10000] pointer-events-none">
+            <span className="text-white/80 text-sm">
+              {selectedIndex + 1} / {filteredImages.length} — {filteredImages[selectedIndex].title}
+            </span>
+          </div>
+        </div>,
+        document.body,
+      )}
     </section>
   )
 }

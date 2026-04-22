@@ -1,6 +1,3 @@
-"use client"
-
-import { motion } from "framer-motion"
 import { Phone, MessageCircle } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { siteConfig } from "@/lib/site"
@@ -10,13 +7,7 @@ export function ContactSection() {
     <section id="contact" className="py-20 md:py-32 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <span className="text-primary font-medium text-sm tracking-widest uppercase mb-4 block">
             Contacto
           </span>
@@ -29,15 +20,9 @@ export function ContactSection() {
           <p className="text-muted-foreground/90 max-w-2xl mx-auto text-sm mt-3">
             Requisitos de arriendo: contactar directamente a la dueña.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl mx-auto space-y-4"
-        >
+        <div className="max-w-2xl mx-auto space-y-4">
           <div className="p-5 rounded-2xl border border-primary/20 bg-primary/5">
             <p className="text-sm text-muted-foreground">
               <span className="font-semibold text-foreground">Respuesta rápida:</span> normalmente respondemos en menos de 1 hora dentro del horario de atención.
@@ -102,7 +87,7 @@ export function ContactSection() {
               Volver a ver fotos
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

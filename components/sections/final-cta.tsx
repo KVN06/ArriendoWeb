@@ -1,6 +1,3 @@
-"use client"
-
-import { motion } from "framer-motion"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { MessageCircle, Phone, Sparkles, ShieldCheck, Clock3 } from "lucide-react"
@@ -10,13 +7,7 @@ export function FinalCtaSection() {
   return (
     <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-br from-primary/10 via-secondary to-background"
-        >
+        <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-br from-primary/10 via-secondary to-background">
           <div className="pointer-events-none absolute -top-20 -left-20 h-56 w-56 rounded-full bg-primary/20 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -right-20 h-56 w-56 rounded-full bg-primary/15 blur-3xl" />
 
@@ -75,7 +66,7 @@ export function FinalCtaSection() {
                     src="/images/apartamento.jpg"
                     alt="Vista principal del apartamento"
                     fill
-                    quality={64}
+                    quality={80}
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
@@ -85,7 +76,7 @@ export function FinalCtaSection() {
                     src="/images/comedorcocina1.jpg"
                     alt="Zona de cocina y comedor"
                     fill
-                    quality={60}
+                    quality={75}
                     className="object-cover"
                     sizes="(max-width: 1024px) 50vw, 25vw"
                   />
@@ -95,7 +86,7 @@ export function FinalCtaSection() {
                     src="/images/patiogrande1.jpg"
                     alt="Patio grande del apartamento"
                     fill
-                    quality={60}
+                    quality={75}
                     className="object-cover"
                     sizes="(max-width: 1024px) 50vw, 25vw"
                   />
@@ -103,7 +94,7 @@ export function FinalCtaSection() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
