@@ -161,10 +161,10 @@ export function GallerySection() {
                   src={image.src}
                   alt={image.alt}
                   fill
-                  quality={75}
-                  priority={index < 3}
-                  loading={index < 3 ? "eager" : "lazy"}
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  quality={68}
+                  loading="lazy"
+                  decoding="async"
+                  className="object-cover md:transition-transform md:duration-300 md:group-hover:scale-105"
                   sizes={
                     index === 0
                       ? "(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 50vw"
@@ -174,9 +174,9 @@ export function GallerySection() {
                   }
                 />
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-300" />
                 {/* Title */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-0 md:translate-y-full md:group-hover:translate-y-0 md:transition-transform md:duration-300">
                   <span className="text-white font-medium text-sm">{image.title}</span>
                 </div>
               </div>

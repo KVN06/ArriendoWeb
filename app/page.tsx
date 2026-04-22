@@ -45,7 +45,7 @@ export default function Home() {
       <div className="pointer-events-none absolute bottom-0 right-0 z-0 h-[28rem] w-[28rem] rounded-full bg-primary/10 blur-3xl" />
       <Navbar />
       <div className="section-shell section-animate"><HeroSection /></div>
-      <div className="section-shell section-animate"><GallerySection /></div>
+      <div className="section-shell"><GallerySection /></div>
       <div className="section-shell section-animate"><DetailsSection /></div>
       <div className="section-shell section-animate"><FeaturesSection /></div>
       <div className="section-shell section-animate"><PricingSection /></div>
