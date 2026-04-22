@@ -197,12 +197,11 @@ export function Navbar() {
                     transition={{ delay: navLinks.length * 0.1 }}
                     className="pt-4"
                   >
-                    <Button 
-                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full py-6 text-lg"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Quiero verlo
-                    </Button>
+                    <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full py-6 text-lg">
+                        Quiero verlo
+                      </Button>
+                    </a>
                   </motion.div>
                 </div>
               </nav>

@@ -5,6 +5,7 @@ import { DetailsSection } from "@/components/sections/details"
 import { FeaturesSection } from "@/components/sections/features"
 import { PricingSection } from "@/components/sections/pricing"
 import { LocationSection } from "@/components/sections/location"
+import { FinalCtaSection } from "@/components/sections/final-cta"
 import { ContactSection } from "@/components/sections/contact"
 import { Footer } from "@/components/footer"
 import { WhatsAppButton } from "@/components/whatsapp-button"
@@ -43,13 +44,14 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[40rem] bg-[radial-gradient(circle_at_top,rgba(176,108,74,0.22),transparent_58%)]" />
       <div className="pointer-events-none absolute bottom-0 right-0 z-0 h-[28rem] w-[28rem] rounded-full bg-primary/10 blur-3xl" />
       <Navbar />
-      <HeroSection />
-      <GallerySection />
-      <DetailsSection />
-      <FeaturesSection />
-      <PricingSection />
-      <LocationSection />
-      <ContactSection />
+      <div className="section-shell section-animate"><HeroSection /></div>
+      <div className="section-shell section-animate"><GallerySection /></div>
+      <div className="section-shell section-animate"><DetailsSection /></div>
+      <div className="section-shell section-animate"><FeaturesSection /></div>
+      <div className="section-shell section-animate"><PricingSection /></div>
+      <div className="section-shell section-animate"><LocationSection /></div>
+      <div className="section-shell section-animate"><FinalCtaSection /></div>
+      <div className="section-shell section-animate"><ContactSection /></div>
       <Footer />
       <WhatsAppButton />
       <StickyContactBar />

@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 const incluido = [
   "Apartamento completamente independiente",
   "Se entrega vacío (sin muebles ni electrodomésticos)",
-  "3 habitaciones amplias",
+  "3 habitaciones",
   "2 baños completos",
   "Sala/garaje para tu vehículo",
   "Cocina-comedor integrado",
@@ -18,7 +18,7 @@ const incluido = [
 ]
 
 const importante = [
-  "Canon: $1.200.000 negociables",
+  "Canon: $1.200.000 negociable",
   "Depósito: Un mes de arriendo",
   "Contrato mínimo: 6 meses",
   "Servicios públicos independientes (agua, energía y gas natural)",
@@ -72,7 +72,7 @@ export function PricingSection() {
             <CardHeader className="text-center pt-10 pb-4">
               <h3 className="text-lg font-semibold text-muted-foreground mb-4">Canon mensual</h3>
               <div className="flex items-baseline justify-center gap-1">
-                <span className="text-4xl md:text-5xl font-bold text-foreground">$1.200.000</span>
+                <span className="text-4xl md:text-5xl font-bold text-foreground">$1.200.000 negociable</span>
                 <span className="text-muted-foreground">COP al mes (servicios aparte)</span>
               </div>
               <p className="text-sm text-muted-foreground mt-2">Se entrega vacío. Servicios no incluidos en el valor mensual.</p>

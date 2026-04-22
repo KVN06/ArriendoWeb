@@ -28,7 +28,7 @@ export function HeroSection() {
         className="absolute inset-0 z-0"
       >
         <Image
-          src="/images/hero-apartment.jpg"
+          src="/images/apartamento.jpg"
           alt="Apartamento en alquiler en Popayán"
           fill
           priority

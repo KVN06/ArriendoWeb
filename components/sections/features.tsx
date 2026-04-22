@@ -42,7 +42,7 @@ export function FeaturesSection() {
           >
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
               <Image
-                src="/images/gallery-1.jpg"
+                src="/images/salagaraje2.jpg"
                 alt="Interior del apartamento"
                 fill
                 className="object-cover"
@@ -57,7 +57,7 @@ export function FeaturesSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="absolute -bottom-6 -right-6 md:bottom-8 md:-right-8 bg-card p-6 rounded-2xl shadow-2xl border border-border/50 max-w-[220px]"
             >
-              <div className="text-3xl font-bold text-primary mb-1">$1.200.000</div>
+              <div className="text-3xl font-bold text-primary mb-1">$1.200.000 negociable</div>
               <div className="text-sm text-muted-foreground">COP al mes (servicios aparte)</div>
             </motion.div>
           </motion.div>

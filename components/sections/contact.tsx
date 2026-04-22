@@ -38,6 +38,12 @@ export function ContactSection() {
           transition={{ duration: 0.6 }}
           className="max-w-2xl mx-auto space-y-4"
         >
+          <div className="p-5 rounded-2xl border border-primary/20 bg-primary/5">
+            <p className="text-sm text-muted-foreground">
+              <span className="font-semibold text-foreground">Respuesta rápida:</span> normalmente respondemos en menos de 1 hora dentro del horario de atención.
+            </p>
+          </div>
+
           <Card className="border-border/50 hover:border-primary/30 transition-colors">
             <CardContent className="p-5 flex items-center gap-4">
               <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
@@ -78,6 +84,23 @@ export function ContactSection() {
             <p className="text-sm text-muted-foreground">
               <span className="font-semibold text-foreground">Horario de atención:</span> lunes a sábado, de 8am a 6pm.
             </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-3">
+            <a
+              href={`https://wa.me/${siteConfig.phoneWhatsApp}?text=Hola! Vi el apartamento en la página web y quiero agendar una visita.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-full bg-foreground text-background px-5 py-3 text-sm font-medium hover:opacity-90 transition-opacity"
+            >
+              Agendar visita
+            </a>
+            <a
+              href="#gallery"
+              className="inline-flex items-center justify-center rounded-full border border-border bg-card px-5 py-3 text-sm font-medium text-foreground hover:bg-secondary transition-colors"
+            >
+              Volver a ver fotos
+            </a>
           </div>
         </motion.div>
       </div>

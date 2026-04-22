@@ -21,7 +21,7 @@ const details = [
   { icon: Bed, label: "Habitaciones", value: "3" },
   { icon: Bath, label: "Baños", value: "2" },
   { icon: TreePine, label: "Patios", value: "2" },
-  { icon: Car, label: "Parqueadero", value: "Sí" },
+  { icon: Car, label: "Parqueadero", value: "Sí", note: "Contactar al dueño para acordar" },
 ]
 
 const spaces = [
@@ -93,9 +93,9 @@ export function DetailsSection() {
           {details.map((detail) => {
             const Icon = detail.icon
             return (
-              <motion.div key={detail.label} variants={itemVariants}>
-                <Card className="group hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 bg-card border-border/50 hover:border-primary/30">
-                  <CardContent className="p-6 md:p-8 text-center">
+              <motion.div key={detail.label} variants={itemVariants} className="h-full">
+                <Card className="h-full group hover:shadow-xl hover:shadow-primary/5 transition-all duration-500 bg-card border-border/50 hover:border-primary/30">
+                  <CardContent className="h-full p-6 md:p-8 text-center flex flex-col items-center justify-center">
                     <motion.div 
                       className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-4 group-hover:scale-110 transition-transform duration-300"
                       whileHover={{ rotate: [0, -10, 10, 0] }}
@@ -105,6 +105,9 @@ export function DetailsSection() {
                     </motion.div>
                     <div className="text-2xl md:text-3xl font-bold text-foreground mb-1">{detail.value}</div>
                     <div className="text-muted-foreground text-sm">{detail.label}</div>
+                    <div className="text-xs text-muted-foreground/80 mt-1 min-h-4">
+                      {detail.note ?? "\u00A0"}
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
