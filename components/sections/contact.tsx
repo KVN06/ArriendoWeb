@@ -15,20 +15,11 @@ export function ContactSection() {
             ¿Te interesa? Hablemos
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Si quieres conocer el apartamento o tienes alguna pregunta, llámanos o escríbenos por WhatsApp. Con gusto te atendemos.
-          </p>
-          <p className="text-muted-foreground/90 max-w-2xl mx-auto text-sm mt-3">
-            Requisitos de arriendo: contactar directamente a la dueña.
+            Llámanos o escríbenos por WhatsApp para resolver dudas y agendar visita.
           </p>
         </div>
 
         <div className="max-w-2xl mx-auto space-y-4">
-          <div className="p-5 rounded-2xl border border-primary/20 bg-primary/5">
-            <p className="text-sm text-muted-foreground">
-              <span className="font-semibold text-foreground">Respuesta rápida:</span> normalmente respondemos en menos de 1 hora dentro del horario de atención.
-            </p>
-          </div>
-
           <Card className="border-border/50 hover:border-primary/30 transition-colors">
             <CardContent className="p-5 flex items-center gap-4">
               <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">

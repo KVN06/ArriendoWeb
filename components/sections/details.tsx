@@ -54,7 +54,7 @@ export function DetailsSection() {
             Todo lo que tiene el apto
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Es un apartamento completo en primer piso dentro de una casa familiar. Tienes tu propia entrada, espacios independientes y un entorno residencial con movimiento urbano normal.
+            Distribución clara, entrada independiente y espacios funcionales para vivir cómodo.
           </p>
         </div>
 

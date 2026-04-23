@@ -41,11 +41,6 @@ export function FeaturesSection() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-            {/* Floating Card */}
-            <div className="absolute -bottom-6 -right-6 md:bottom-8 md:-right-8 bg-card p-6 rounded-2xl shadow-2xl border border-border/50 max-w-[220px]">
-              <div className="text-3xl font-bold text-primary mb-1">$1.200.000 negociable</div>
-              <div className="text-sm text-muted-foreground">COP al mes (servicios aparte)</div>
-            </div>
           </div>
 
           {/* Content Side */}
@@ -57,7 +52,7 @@ export function FeaturesSection() {
               Un lugar para sentirte en casa
             </h2>
             <p className="text-muted-foreground mb-10 text-pretty">
-              No es solo un apartamento: es un espacio cómodo, independiente y bien ubicado. Está en una zona con dinámica urbana normal, ideal para quien valora conexión y cercanía a servicios.
+              Cómodo, bien ubicado y con acceso rápido a transporte, comercio y servicios.
             </p>
 
             <div className="space-y-6">

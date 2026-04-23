@@ -23,8 +23,7 @@ export function FinalCtaSection() {
               </h3>
 
               <p className="text-muted-foreground mb-6 max-w-xl text-pretty">
-                Agenda tu visita por WhatsApp o llamada. Te respondemos rápido y te contamos condiciones,
-                disponibilidad y requisitos directamente.
+                Agenda tu visita por WhatsApp o llamada y conoce disponibilidad y condiciones.
               </p>
 
               <div className="flex flex-wrap gap-2 mb-7">

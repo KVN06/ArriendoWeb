@@ -132,19 +132,11 @@ export function GallerySection() {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 auto-rows-[140px] md:auto-rows-[180px]">
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 md:gap-4">
           {filteredImages.map((image, index) => (
             <div
               key={image.src}
-              className={`relative cursor-pointer group overflow-hidden rounded-xl ${
-                index === 0
-                  ? "col-span-2 row-span-2"
-                  : index === 1 || index === 6
-                    ? "row-span-2"
-                    : index === 4 || index === 10 || index === 16
-                      ? "col-span-2"
-                      : ""
-              }`}
+              className="relative cursor-pointer group overflow-hidden rounded-xl"
               onClick={() => openLightbox(index)}
               onKeyDown={(event) => {
                 if (event.key === "Enter" || event.key === " ") {
@@ -156,7 +148,7 @@ export function GallerySection() {
               tabIndex={0}
               aria-label={`Abrir imagen ${index + 1}: ${image.title}`}
             >
-              <div className="relative w-full h-full min-h-[140px] md:min-h-[180px]">
+              <div className="relative w-full aspect-square md:aspect-[4/3]">
                 <Image
                   src={image.src}
                   alt={image.alt}
@@ -166,11 +158,7 @@ export function GallerySection() {
                   decoding="async"
                   className="object-cover md:transition-transform md:duration-300 md:group-hover:scale-105"
                   sizes={
-                    index === 0
-                      ? "(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 50vw"
-                      : index === 4 || index === 10 || index === 16
-                        ? "(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 50vw"
-                        : "(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    "(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   }
                 />
                 {/* Overlay */}

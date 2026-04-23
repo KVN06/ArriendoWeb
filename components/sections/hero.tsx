@@ -38,7 +38,7 @@ export function HeroSection() {
         </h1>
 
         <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-4 text-pretty">
-          Apartamento amplio e independiente en casa familiar. Se entrega vacío (sin muebles), con 3 habitaciones, 2 baños, cocina y espacio para tu carro y/o moto.
+          Primer piso independiente, 3 habitaciones, 2 baños, 2 patios y parqueadero a convenir.
         </p>
 
         <div className="flex items-center justify-center gap-2 text-white/70 mb-8">

@@ -13,7 +13,7 @@ export const siteConfig = {
   neighborhood: "José María Obando",
   addressLine: "Calle 6 #22-18",
   fullAddress: "Calle 6 #22-18, José María Obando, Popayán",
-  phoneDisplay: "+57 323 393 3107",
-  phoneE164: "+573233933107",
-  phoneWhatsApp: "573233933107",
+  phoneDisplay: "+57 350 615 1037",
+  phoneE164: "+573506151037",
+  phoneWhatsApp: "573506151037",
 } as const

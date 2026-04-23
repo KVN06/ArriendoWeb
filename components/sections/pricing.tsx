@@ -41,7 +41,7 @@ export function PricingSection() {
             Cuánto cuesta
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Un precio justo por un apartamento completo y bien ubicado. Sin sorpresas ni cobros escondidos.
+            Precio claro y condiciones directas con la dueña.
           </p>
         </div>
 

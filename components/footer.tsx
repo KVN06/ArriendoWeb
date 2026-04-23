@@ -20,10 +20,7 @@ export function Footer() {
               {siteConfig.brandName}
             </a>
             <p className="text-white/70 text-sm max-w-xs text-pretty mb-4 dark:text-zinc-300/80">
-              Apartamento amplio e independiente en casa familiar. 3 habitaciones, 2 baños, patios y parqueadero.
-            </p>
-            <p className="text-white/70 text-sm dark:text-zinc-300/80">
-              <strong className="text-white dark:text-zinc-100">{siteConfig.monthlyPrice} COP al mes (servicios aparte)</strong>
+              Primer piso independiente con 3 habitaciones, 2 baños y 2 patios.
             </p>
           </div>
 
