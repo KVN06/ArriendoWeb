@@ -1,9 +1,6 @@
-import { promises as fs } from 'node:fs'
-import path from 'node:path'
+import { defaultVisitHours, type VisitHoursData } from './visit-hours-data'
 
-import { defaultVisitHours, type VisitHourItem, type VisitHoursData } from './visit-hours-data'
-
-const dataFilePath = path.join(process.cwd(), 'data', 'visit-hours.json')
+let visitHoursStore: VisitHoursData = JSON.parse(JSON.stringify(defaultVisitHours))
 
 function normalizeText(value: unknown, fallback: string) {
   if (typeof value !== 'string') {
@@ -27,7 +24,7 @@ function normalizeVisitHours(raw: unknown): VisitHoursData {
     subtitle: normalizeText(candidate.subtitle, defaultVisitHours.subtitle),
     note: normalizeText(candidate.note, defaultVisitHours.note),
     items: defaultVisitHours.items.map((fallbackItem, index) => {
-      const item = items[index] as Partial<VisitHourItem> | undefined
+      const item = items[index] as Partial<VisitHoursData['items'][number]> | undefined
 
       return {
         day: normalizeText(item?.day, fallbackItem.day),
@@ -37,26 +34,10 @@ function normalizeVisitHours(raw: unknown): VisitHoursData {
   }
 }
 
-async function ensureVisitHoursFile() {
-  try {
-    await fs.access(dataFilePath)
-  } catch {
-    await fs.mkdir(path.dirname(dataFilePath), { recursive: true })
-    await fs.writeFile(dataFilePath, `${JSON.stringify(defaultVisitHours, null, 2)}\n`, 'utf8')
-  }
-}
-
 export async function getVisitHours(): Promise<VisitHoursData> {
-  try {
-    await ensureVisitHoursFile()
-    const fileContents = await fs.readFile(dataFilePath, 'utf8')
-    return normalizeVisitHours(JSON.parse(fileContents))
-  } catch {
-    return defaultVisitHours
-  }
+  return JSON.parse(JSON.stringify(visitHoursStore))
 }
 
 export async function saveVisitHours(data: VisitHoursData) {
-  await fs.mkdir(path.dirname(dataFilePath), { recursive: true })
-  await fs.writeFile(dataFilePath, `${JSON.stringify(normalizeVisitHours(data), null, 2)}\n`, 'utf8')
+  visitHoursStore = normalizeVisitHours(data)
 }
