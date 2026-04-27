@@ -33,7 +33,7 @@ export function FeaturesSection() {
           <div className="relative">
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
               <Image
-                src="/images/salagaraje2.jpg"
+                src="/images/fast/salagaraje2.jpg"
                 alt="Interior del apartamento"
                 fill
                 quality={80}

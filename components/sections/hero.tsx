@@ -11,7 +11,7 @@ export function HeroSection() {
       {/* Background Image with Parallax */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/apartamento.jpg"
+          src="/images/fast/apartamento.jpg"
           alt="Apartamento en alquiler en Popayán"
           fill
           priority

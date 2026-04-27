@@ -62,7 +62,7 @@ export function FinalCtaSection() {
               <div className="grid grid-cols-2 gap-3">
                 <div className="relative col-span-2 aspect-[16/10] overflow-hidden rounded-2xl border border-border/60">
                   <Image
-                    src="/images/apartamento.jpg"
+                    src="/images/fast/apartamento.jpg"
                     alt="Vista principal del apartamento"
                     fill
                     quality={80}
@@ -72,7 +72,7 @@ export function FinalCtaSection() {
                 </div>
                 <div className="relative aspect-square overflow-hidden rounded-2xl border border-border/60">
                   <Image
-                    src="/images/comedorcocina1.jpg"
+                    src="/images/fast/comedorcocina1.jpg"
                     alt="Zona de cocina y comedor"
                     fill
                     quality={75}
@@ -82,7 +82,7 @@ export function FinalCtaSection() {
                 </div>
                 <div className="relative aspect-square overflow-hidden rounded-2xl border border-border/60">
                   <Image
-                    src="/images/patiogrande1.jpg"
+                    src="/images/fast/patiogrande1.jpg"
                     alt="Patio grande del apartamento"
                     fill
                     quality={75}
