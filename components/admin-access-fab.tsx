@@ -1,20 +1,50 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { KeyRound, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 
-export function AdminAccessFab() {
+type AdminAccessFabProps = {
+  onInteraction?: () => void
+}
+
+export function AdminAccessFab({ onInteraction }: AdminAccessFabProps) {
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const [password, setPassword] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isHidden, setIsHidden] = useState(false)
   const timerRef = useRef<number | null>(null)
+  const dialogTimeoutRef = useRef<number | null>(null)
   const LONG_PRESS_MS = 800
+  const DIALOG_TIMEOUT_MS = 10000
+
+  useEffect(() => {
+    if (!open) {
+      if (dialogTimeoutRef.current) {
+        window.clearTimeout(dialogTimeoutRef.current)
+        dialogTimeoutRef.current = null
+      }
+
+      return
+    }
+
+    dialogTimeoutRef.current = window.setTimeout(() => {
+      setOpen(false)
+      setPassword('')
+      dialogTimeoutRef.current = null
+    }, DIALOG_TIMEOUT_MS)
+
+    return () => {
+      if (dialogTimeoutRef.current) {
+        window.clearTimeout(dialogTimeoutRef.current)
+        dialogTimeoutRef.current = null
+      }
+    }
+  }, [open])
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -58,6 +88,7 @@ export function AdminAccessFab() {
         type="button"
         onPointerDown={() => {
           if (isHidden) return
+          onInteraction?.()
           timerRef.current = window.setTimeout(() => {
             setOpen(true)
             timerRef.current = null
@@ -81,10 +112,10 @@ export function AdminAccessFab() {
             timerRef.current = null
           }
         }}
-        className="fixed left-6 bottom-20 md:bottom-6 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-border/40 bg-background/80 text-foreground/90 shadow-sm backdrop-blur opacity-60 transition-transform active:scale-95"
+        className="fixed left-6 bottom-20 md:bottom-6 z-50 flex h-9 w-9 items-center justify-center rounded-full border border-border/30 bg-background/70 text-foreground/80 shadow-none backdrop-blur-sm opacity-40 transition-transform active:scale-95"
         aria-label="Acceso"
       >
-        <KeyRound className="h-4 w-4" />
+        <KeyRound className="h-3.5 w-3.5" />
       </button>
 
       <Dialog open={open} onOpenChange={setOpen}>
