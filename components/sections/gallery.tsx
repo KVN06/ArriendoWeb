@@ -1,3 +1,8 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import { createPortal } from "react-dom"
+import { X } from "lucide-react"
 import Image from "next/image"
 
 const images = [
@@ -24,6 +29,32 @@ const images = [
 ]
 
 export function GallerySection() {
+  const [selectedImage, setSelectedImage] = useState<(typeof images)[number] | null>(null)
+
+  useEffect(() => {
+    if (!selectedImage) return
+
+    const previousBodyOverflow = document.body.style.overflow
+    const previousHtmlOverflow = document.documentElement.style.overflow
+
+    document.body.style.overflow = "hidden"
+    document.documentElement.style.overflow = "hidden"
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedImage(null)
+      }
+    }
+
+    window.addEventListener("keydown", onKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow
+      document.documentElement.style.overflow = previousHtmlOverflow
+      window.removeEventListener("keydown", onKeyDown)
+    }
+  }, [selectedImage])
+
   return (
     <section id="gallery" className="py-20 md:py-32 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -43,7 +74,20 @@ export function GallerySection() {
         {/* Gallery Grid */}
         <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 md:gap-4">
           {images.map((image) => (
-            <div key={image.src} className="relative group overflow-hidden rounded-xl">
+            <div
+              key={image.src}
+              role="button"
+              tabIndex={0}
+              onClick={() => setSelectedImage(image)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault()
+                  setSelectedImage(image)
+                }
+              }}
+              className="relative group overflow-hidden rounded-xl text-left cursor-zoom-in touch-manipulation"
+              aria-label={`Abrir imagen ${image.title}`}
+            >
               <div className="relative w-full aspect-square md:aspect-[4/3]">
                 <Image
                   src={image.src}
@@ -68,6 +112,55 @@ export function GallerySection() {
           ))}
         </div>
       </div>
+
+      {selectedImage && typeof document !== "undefined"
+        ? createPortal(
+            <div
+              className="fixed inset-0 z-[9999] bg-black/95 overflow-hidden"
+              onClick={() => setSelectedImage(null)}
+              role="dialog"
+              aria-modal="true"
+              aria-label={`Imagen ampliada de ${selectedImage.title}`}
+            >
+              <div className="absolute inset-0 p-3 md:p-8" onClick={(event) => event.stopPropagation()}>
+                <div className="relative w-full h-full">
+                  <Image
+                    src={selectedImage.src}
+                    alt={selectedImage.alt}
+                    fill
+                    quality={90}
+                    className="object-contain"
+                    sizes="100vw"
+                    priority
+                  />
+                </div>
+              </div>
+
+              <button
+                type="button"
+                className="fixed h-12 w-12 md:h-14 md:w-14 text-white bg-black/70 hover:bg-black/90 z-[10000] shadow-lg rounded-full flex items-center justify-center"
+                style={{
+                  top: "max(env(safe-area-inset-top), 12px)",
+                  right: "max(env(safe-area-inset-right), 12px)",
+                }}
+                onClick={(event) => {
+                  event.stopPropagation()
+                  setSelectedImage(null)
+                }}
+                aria-label="Cerrar visor"
+              >
+                <X className="w-6 h-6 md:w-7 md:h-7" />
+              </button>
+
+              <div className="fixed bottom-3 md:bottom-5 left-0 right-0 text-center px-4 z-[10000] pointer-events-none">
+                <span className="text-white/80 text-sm">
+                  {selectedImage.title}
+                </span>
+              </div>
+            </div>,
+            document.body,
+          )
+        : null}
     </section>
   )
 }
