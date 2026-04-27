@@ -1,6 +1,7 @@
 import { Phone, MessageCircle } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { siteConfig } from "@/lib/site"
+import { VisitHoursPanel } from "@/components/visit-hours-panel"
 
 export function ContactSection() {
   return (
@@ -56,11 +57,7 @@ export function ContactSection() {
             </Card>
           </a>
 
-          <div className="p-6 rounded-2xl bg-primary/5 border border-primary/10">
-            <p className="text-sm text-muted-foreground">
-              <span className="font-semibold text-foreground">Horario de atención:</span> lunes a sábado, de 8am a 6pm.
-            </p>
-          </div>
+          <VisitHoursPanel />
 
           <div className="grid sm:grid-cols-2 gap-3">
             <a

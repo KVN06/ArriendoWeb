@@ -1,0 +1,35 @@
+{
+  "title": "Horario de visitas",
+  "subtitle": "Agenda tu visita sin registrarte",
+  "note": "Los horarios pueden cambiar. Confirma por WhatsApp antes de venir.",
+  "items": [
+    {
+      "day": "Lunes",
+      "hours": "1:00 p. m. - 5:00 p. m."
+    },
+    {
+      "day": "Martes",
+      "hours": "No disponible"
+    },
+    {
+      "day": "Miércoles",
+      "hours": "No disponible"
+    },
+    {
+      "day": "Jueves",
+      "hours": "No disponible"
+    },
+    {
+      "day": "Viernes",
+      "hours": "No disponible"
+    },
+    {
+      "day": "Sábado",
+      "hours": "No disponible"
+    },
+    {
+      "day": "Domingo",
+      "hours": "No disponible"
+    }
+  ]
+}

@@ -8,6 +8,7 @@ import { LocationSection } from "@/components/sections/location"
 import { FinalCtaSection } from "@/components/sections/final-cta"
 import { ContactSection } from "@/components/sections/contact"
 import { Footer } from "@/components/footer"
+import { AdminAccessFab } from "@/components/admin-access-fab"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { StickyContactBar } from "@/components/sticky-contact-bar"
 import { siteConfig } from "@/lib/site"
@@ -53,6 +54,7 @@ export default function Home() {
       <div className="section-shell section-animate"><FinalCtaSection /></div>
       <div className="section-shell section-animate"><ContactSection /></div>
       <Footer />
+      <AdminAccessFab />
       <WhatsAppButton />
       <StickyContactBar />
     </main>

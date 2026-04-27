@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Menu, X, Moon, Sun } from "lucide-react"
+import { Menu, X, Moon, Sun, CalendarCog } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 
@@ -118,7 +118,7 @@ export function Navbar() {
 
             {/* Actions */}
             <div className="flex items-center gap-3">
-              {mounted && (
+               {mounted && (
                 <Button
                   variant="ghost"
                   size="icon"
@@ -173,6 +173,7 @@ export function Navbar() {
                     {link.name}
                   </a>
                 ))}
+                
                 <div className="pt-4">
                   <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
                     <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full py-6 text-lg">
