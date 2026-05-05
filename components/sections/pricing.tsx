@@ -15,7 +15,7 @@ const incluido = [
 ]
 
 const importante = [
-  "Canon: $1.200.000 negociable",
+  "Oferta especial: $1.000.000 (antes $1.200.000)",
   "Depósito: Un mes de arriendo",
   "Contrato mínimo: 6 meses",
   "Servicios públicos independientes (agua, energía y gas natural)",
@@ -56,8 +56,9 @@ export function PricingSection() {
             </div>
             <CardHeader className="text-center pt-10 pb-4">
               <h3 className="text-lg font-semibold text-muted-foreground mb-4">Canon mensual</h3>
-              <div className="flex items-baseline justify-center gap-1">
-                <span className="text-4xl md:text-5xl font-bold text-foreground">$1.200.000 negociable</span>
+              <div className="flex items-baseline justify-center gap-3">
+                <span className="text-sm text-muted-foreground line-through">$1.200.000</span>
+                <span className="text-4xl md:text-5xl font-bold text-foreground">$1.000.000</span>
                 <span className="text-muted-foreground">COP al mes (servicios aparte)</span>
               </div>
               <p className="text-sm text-muted-foreground mt-2">Se entrega vacío. Servicios no incluidos en el valor mensual.</p>

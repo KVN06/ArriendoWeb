@@ -15,12 +15,12 @@ export const defaultVisitHours: VisitHoursData = {
   subtitle: 'Agenda tu visita sin registrarte',
   note: 'Los horarios pueden cambiar. Confirma por WhatsApp antes de venir.',
   items: [
-    { day: 'Lunes', hours: '8:00 a. m. - 6:00 p. m.' },
-    { day: 'Martes', hours: '8:00 a. m. - 6:00 p. m.' },
-    { day: 'Miércoles', hours: '8:00 a. m. - 6:00 p. m.' },
-    { day: 'Jueves', hours: '8:00 a. m. - 6:00 p. m.' },
-    { day: 'Viernes', hours: '8:00 a. m. - 6:00 p. m.' },
-    { day: 'Sábado', hours: '9:00 a. m. - 2:00 p. m.' },
+    { day: 'Lunes', hours: '2:00 p. m. - 5:00 p. m.' },
+    { day: 'Martes', hours: '2:00 p. m. - 5:00 p. m.' },
+    { day: 'Miércoles', hours: '2:00 p. m. - 5:00 p. m.' },
+    { day: 'Jueves', hours: '2:00 p. m. - 5:00 p. m.' },
+    { day: 'Viernes', hours: '2:00 p. m. - 5:00 p. m.' },
+    { day: 'Sábado', hours: '2:00 p. m. - 5:00 p. m.' },
     { day: 'Domingo', hours: 'No disponible' },
   ],
 }
